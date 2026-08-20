@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eli Wu | 攀登與技術紀錄</title>
+    <style>
+        /* 基礎樣式設定 */
+        :root {
+            --primary-color: #2F4F4F; /* 深海綠 */
+            --secondary-color: #8FBC8F;
+            --text-color: #333333;
+            --bg-color: #F8F9FA;
+        }
+        body {
+            font-family: "Helvetica Neue", Arial, "LiHei Pro", "微軟正黑體", sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.6;
+        }
+        /* 導覽列 */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+        /* 首頁橫幅 (Hero Section) */
+        .hero {
+            background-color: var(--text-color); 
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+        /* 內容區塊 */
+        section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        section h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--secondary-color);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+        /* 卡片網格系統 (登山分類) */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+        }
+        .card ul {
+            padding-left: 20px;
+        }
+        .card ul li {
+            margin-bottom: 8px;
+        }
+        .tag {
+            font-size: 0.8rem;
+            background-color: #E9ECEF;
+            color: #495057;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 5px;
+        }
+        /* 照片網格 */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .photo-item {
+            background-color: #e9ecef;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* 致謝區塊 */
+        .credits-section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 40px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            font-size: 0.95rem;
+            color: #555;
+            text-align: center;
+        }
+        /* 頁尾 */
+        footer {
+            background-color: var(--text-color);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 頂部導覽列 -->
+    <header>
+        <nav>
+            <div class="logo">Eli Wu</div>
+            <ul>
+                <li><a href="#home">首頁</a></li>
+                <li><a href="#records">攀登紀錄</a></li>
+                <li><a href="#gallery">影像存檔</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 視覺橫幅 -->
+    <div id="home" class="hero">
+        <h1>Eli Wu (吳東洋)</h1>
+        <p>攀登與技術紀錄 ｜ 國立台北科技大學登山社 創社第94年 社長</p>
+    </div>
+
+    <!-- 紀錄分類區 -->
+    <section id="records">
+        <div style="text-align: center;">
+            <h2>分類紀錄存檔</h2>
+        </div>
+        <div class="grid-container">
+            
+            <!-- 分類一：技術與訓練 -->
+            <div class="card">
+                <h3>⛏️ 技術與訓練</h3>
+                <ul>
+                    <li>攀岩技術 <span class="tag">先鋒 / 頂繩</span></li>
+                    <li>乾攀 (Dry Tooling) <span class="tag">自主訓練</span></li>
+                    <li>山盟雛鷹計畫 <span class="tag">技術培訓</span></li>
+                    <li>日本八岳雪訓 <span class="tag">海外</span></li>
+                    <li>113 大專山訓 <span class="tag">4天3夜</span></li>
+                </ul>
+            </div>
+
+            <!-- 分類二：專案與志工 -->
+            <div class="card">
+                <h3>🚩 專案經營與山林志工</h3>
+                <ul>
+                    <li>北科大抱石場改建 <span class="tag">全台唯一學生自主乾攀場</span></li>
+                    <li>山林志工 (南二段、聖稜線) <span class="tag">山盟反光路標</span></li>
+                    <li>山林志工 (一般郊山) <span class="tag">山盟反光路標</span></li>
+                </ul>
+            </div>
+
+            <!-- 分類三：帶隊與統籌 -->
+            <div class="card">
+                <h3>👥 帶隊與活動統籌</h3>
+                <ul>
+                    <li>高島縱走 2天1夜 <span class="tag">四校聯合野營 北科負責人</span></li>
+                    <li>畢祿山 2天1夜 <span class="tag">帶隊</span></li>
+                    <li>霞喀羅古道 <span class="tag">帶隊</span></li>
+                </ul>
+            </div>
+
+            <!-- 分類四：單攻紀錄 -->
+            <div class="card">
+                <h3>⚡ 單攻紀錄</h3>
+                <ul>
+                    <li>志雪單攻</li>
+                    <li>玉山南稜單攻</li>
+                    <li>七星山三進山出</li>
+                </ul>
+            </div>
+
+            <!-- 分類五：其餘登山經驗 -->
+            <div class="card" style="grid-column: 1 / -1;">
+                <h3>⛺ 其餘登山經驗</h3>
+                <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+                    <li>志佳陽 (2天1夜)</li>
+                    <li>冬季南二段逆走</li>
+                    <li>聖稜線縱走</li>
+                    <li>南湖南峰 <span class="tag">尖尖挖嘎奈</span></li>
+                    <li>玉山前五峰 (2天1夜)</li>
+                    <li>大劍山 (2天1夜)</li>
+                    <li>羅馬縱走</li>
+                    <li>桃山神木</li>
+                </ul>
+            </div>
+
+            <!-- 分類六：相關台灣高山 (純山名) -->
+            <div class="card" style="grid-column: 1 / -1;">
+                <h3>⛰️ 相關台灣高山</h3>
+                <ul>
+                    <li><strong>南二段：</strong>向陽山、三叉山、南雙頭山、雲峰、轆轆山、塔芬山、達芬尖山、南大水窟山、大水窟山、八通關山</li>
+                    <li style="margin-top: 8px;"><strong>聖稜線：</strong>雪山東峰、雪山主峰、大霸尖山、小霸尖山、伊澤山、加利山、素密達山、北稜角、凱蘭特崑山、穆特勒布山、布秀蘭山、巴沙拉雲山、耶巴奧山、中霸尖山</li>
+                    <li style="margin-top: 8px;"><strong>其他百岳：</strong>桃山、志佳陽、大劍山、玉山主峰、玉山東峰、玉山北峰、玉山西峰、玉山前峰、畢祿山</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 影像存檔區 -->
+    <section id="gallery">
+        <div style="text-align: center;">
+            <h2>影像存檔</h2>
+        </div>
+        <div class="photo-gallery">
+            <!-- 乾攀場照片 -->
+            <div class="photo-item"><img src="image_8b0d25.jpg" alt="北科大乾攀場訓練"></div>
+            <!-- 高山縱走與雲海 -->
+            <div class="photo-item"><img src="image_8b0d1e.jpg" alt="高山縱走與雲海"></div>
+            <!-- 八岳雪訓照片 (如果持續破圖，請檢查資料夾中的檔名是 image_8b0a7b.jpg 還是 image_8b0d7b.jpg，並修改下方程式碼) -->
+            <div class="photo-item"><img src="image_8b0a7b.jpg" alt="八岳雪地訓練與攀登"></div>
+            <!-- 志工作業照片 -->
+            <div class="photo-item"><img src="image_8b0a75.jpg" alt="山盟公益協會志工作業"></div>
+            <!-- 四校野營照片 -->
+            <div class="photo-item"><img src="image_8b0d22.jpg" alt="四校聯合野營大合照"></div>
+            <!-- 單攻紀錄照片 -->
+            <div class="photo-item"><img src="image_8b0a79.jpg" alt="輕裝單攻紀錄"></div>
+        </div>
+
+        <!-- 簡要致謝 -->
+        <div class="credits-section">
+            <strong>Notes & Credits:</strong><br>
+            這段登山經歷，感謝登山啟蒙者天樂、登山導師 Peter冠元。<br>
+            感謝社團同行的好友與隊友威力、冠儒；以及在乾攀領域給予極大鼓勵與幫助的益帆。
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer>
+        <p>&copy; 2026 Eli Wu. Personal Archive.</p>
+    </footer>
+
+</body>
+</html>
