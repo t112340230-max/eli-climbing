@@ -40,6 +40,7 @@
   .card .hook { margin: 10px 0 0; color: #bfc3bc; font-size: .95rem; }
   @media (min-width: 680px) { .card { margin-left: 0; margin-right: 0; } .card .txt { padding-left: 0; padding-right: 0; } }
 
+  .inline-list .lbl { display: block; font-size: .75rem; color: #5c605a; letter-spacing: .08em; margin-top: 10px; }
   .inline-list { margin: 0 0 .6em; color: var(--muted); font-size: .9rem; line-height: 2; }
 
   /* 單趟 */
@@ -382,6 +383,7 @@ const para = p => typeof p === 'string' && p.startsWith('## ')
 const fmt = n => n ? Number(n).toLocaleString() : '';
 
 const MAIN = TRIPS.filter(t => t.main);
+const ALL_PEAKS = [...new Set([...PEAK_GROUPS.flatMap(g => g[1]), ...TRIPS.flatMap(t => t.peaks || [])])];
 
 function renderHome() {
   const list = items => `<ul class="list">${items.map(t => {
@@ -407,8 +409,9 @@ function renderHome() {
     ${list(MAIN)}
 
     <h2 id="others">其他</h2>
-    <p class="inline-list">${rest.filter(t => t.group !== 'other').map(t => esc(t.title)).join('　')}</p>
-    <p class="inline-list">${rest.filter(t => t.group === 'other').map(t => esc(t.title)).join('　')}</p>`;
+    <p class="inline-list"><span class="lbl">行程</span>${rest.filter(t => t.group !== 'other').map(t => esc(t.title)).join('　')}</p>
+    <p class="inline-list"><span class="lbl">山岳</span>${ALL_PEAKS.map(esc).join('　')}</p>
+    <p class="inline-list"><span class="lbl">經歷</span>${rest.filter(t => t.group === 'other').map(t => esc(t.title)).join('　')}</p>`;
 }
 
 function renderTrip(t) {
