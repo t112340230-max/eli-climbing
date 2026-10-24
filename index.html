@@ -7,102 +7,84 @@
 <title>登山紀錄 | 吳東洋</title>
 <style>
   :root {
-    --bg: #111311;
-    --bg-2: #1a1d1a;
-    --text: #e4e6e1;
-    --muted: #8d928a;
-    --line: #2a2e2a;
-    --link: #a9d3a9;
+    --bg: #121412;
+    --text: #e2e4df;
+    --muted: #7d8279;
+    --line: #262926;
   }
   html { -webkit-text-size-adjust: 100%; }
-  body {
-    margin: 0;
-    font-family: -apple-system, "Helvetica Neue", Arial, "PingFang TC", "微軟正黑體", sans-serif;
-    color: var(--text);
-    background: var(--bg);
-    line-height: 1.8;
-    font-size: 17px;
-  }
-  .wrap { max-width: 720px; margin: 0 auto; padding: 0 18px; }
-  a { color: var(--link); text-decoration: none; }
-  a:hover { text-decoration: underline; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-size: 17px; line-height: 1.85;
+    font-family: -apple-system, "Helvetica Neue", Arial, "PingFang TC", "微軟正黑體", sans-serif; }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 0 20px; }
+  a { color: inherit; text-decoration: none; }
   img { max-width: 100%; display: block; }
 
-  header { padding: 36px 0 6px; }
-  header h1 { margin: 0; font-size: 1.7rem; }
-  header h1 a { color: var(--text); }
-  header p { margin: 4px 0 0; color: var(--muted); font-size: .95rem; }
-  header nav { margin-top: 12px; }
-  header nav a { margin-right: 18px; display: inline-block; padding: 4px 0; }
+  header { padding: 56px 0 8px; }
+  header h1 { margin: 0; font-size: 1.5rem; font-weight: 600; letter-spacing: .02em; }
+  header p { margin: 2px 0 0; color: var(--muted); font-size: .9rem; }
 
-  h2 { font-size: 1.15rem; margin: 40px 0 8px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
-  h3.year { font-size: .95rem; color: var(--muted); margin: 26px 0 4px; font-weight: normal; }
+  h2 { font-size: .8rem; font-weight: normal; color: var(--muted); letter-spacing: .08em; margin: 56px 0 6px; }
+  h2 .range { margin-left: 12px; }
 
-  /* 紀錄清單 */
-  .list { list-style: none; margin: 0; padding: 0; }
-  .list li a { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 13px 2px; border-bottom: 1px solid var(--line); color: var(--text); }
-  .list li a:hover, .list li a:active { background: var(--bg-2); text-decoration: none; }
-  .list .t { font-size: 1.02rem; }
-  .list .sub { display: block; font-size: .82rem; color: var(--muted); margin-top: 1px; }
-  .list .t b { font-weight: normal; color: var(--link); }
+  .intro { margin-top: 36px; }
+  .intro p { margin: 0 0 1.1em; color: #cfd2cc; font-size: .98rem; }
 
+  .list { list-style: none; margin: 14px 0 0; padding: 0; }
+  .card { display: block; margin: 0 -20px 44px; }
+  .card .pic { aspect-ratio: 16 / 10; overflow: hidden; background: #1b1e1b; }
+  .card .pic img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+  .card:hover .pic img { transform: scale(1.02); }
+  .card .txt { padding: 14px 20px 0; }
+  .card .t { font-size: 1.25rem; font-weight: 600; line-height: 1.4; }
+  .card .d { color: var(--muted); font-size: .8rem; margin-top: 2px; }
+  .card .hook { margin: 10px 0 0; color: #bfc3bc; font-size: .95rem; }
+  @media (min-width: 680px) { .card { margin-left: 0; margin-right: 0; } .card .txt { padding-left: 0; padding-right: 0; } }
 
-  h2 .range { font-size: .8rem; font-weight: normal; color: var(--muted); margin-left: 8px; }
-  .intro p { margin: 0 0 1.1em; color: #d4d7d1; }
-  .plain { list-style: none; margin: 0; padding: 0; }
-  .plain li { padding: 7px 2px; border-bottom: 1px solid var(--line); font-size: .95rem; color: #c4c7c1; }
-  .plain small { color: var(--muted); margin-left: 10px; font-size: .8rem; }
-  .peaks p { margin: 8px 0; line-height: 2; }
-  .peaks b { color: var(--muted); font-weight: normal; }
-  .photos { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 4px; }
-  .photos a, .photos span { display: block; aspect-ratio: 1/1; background: var(--bg-2); overflow: hidden; }
-  .photos img { width: 100%; height: 100%; object-fit: cover; }
-  .credits { color: var(--muted); font-size: .95rem; }
+  .inline-list { margin: 0 0 .6em; color: var(--muted); font-size: .9rem; line-height: 2; }
 
   /* 單趟 */
-  .back { display: inline-block; margin-top: 24px; padding: 4px 0; }
-  .trip h1 { font-size: 1.6rem; line-height: 1.35; margin: 16px 0 6px; }
-  .trip .meta { color: var(--muted); font-size: .9rem; line-height: 1.7; }
-  .trip .cover { margin: 20px -18px; }
-  .trip .body { margin-top: 12px; }
-  .trip .body p { margin: 0 0 1.3em; }
-  .trip .thanks { margin-top: 2em; padding-top: 1em; border-top: 1px solid var(--line); color: #c4c7c1; }
-  .trip .thanks p { margin: 0 0 .4em; }
-  .trip .log p { margin: 6px 0; }
-  .trip .log b { margin-right: 10px; color: var(--muted); font-weight: normal; }
-  .trip .peaklist { color: #c4c7c1; }
-  .trip .photos { display: block; columns: 2; column-gap: 6px; margin: 0 -18px; padding: 0 6px; }
-  .trip .photos figure { break-inside: avoid; margin: 0 0 6px; }
+  .back { display: inline-block; margin-top: 32px; color: var(--muted); font-size: .9rem; }
+  .trip h1 { font-size: 1.6rem; font-weight: 600; line-height: 1.35; margin: 20px 0 4px; }
+  .trip .meta { color: var(--muted); font-size: .88rem; }
+  .trip .cover { margin: 28px -20px 8px; }
+  .trip .body { margin-top: 8px; }
+  .trip .body p { margin: 0 0 1.4em; }
+  .trip .thanks { margin-top: 2.5em; color: var(--muted); }
+  .trip .thanks p { margin: 0 0 .3em; }
+  .trip h3.sub { font-size: 1.05rem; font-weight: 600; margin: 2.6em 0 .7em; }
+  .trip .body h3.sub:first-child { margin-top: .6em; }
   .trip figure { margin: 0; }
-  .trip figcaption { font-size: .85rem; color: var(--muted); margin-top: 4px; }
+  .trip figcaption { font-size: .8rem; color: var(--muted); margin-top: 6px; }
+  .trip figure.inline { margin: 2em -20px; }
+  .trip figure.inline figcaption { padding: 0 20px; }
   .trip img { cursor: zoom-in; }
-
-  .rec { width: 100%; border-collapse: collapse; font-size: .95rem; margin-top: 4px; }
-  .rec th { text-align: left; font-weight: normal; color: var(--muted); white-space: nowrap; padding: 9px 14px 9px 0; vertical-align: top; width: 1%; border-bottom: 1px solid var(--line); }
-  .rec td { padding: 9px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
-  .rec td small { color: var(--muted); margin-left: 6px; }
-  .trip figure.inline { margin: 1.6em -18px; }
-  .trip figure.inline figcaption { padding: 0 18px; }
+  .trip .photos { columns: 2; column-gap: 4px; margin: 0 -20px; }
+  .trip .photos figure { break-inside: avoid; margin: 0 0 4px; }
   .trip .photos figure img { width: 100%; }
-  .trip h3.sub { font-size: 1.05rem; margin: 2em 0 .6em; }
-  .trip .body h3.sub:first-child { margin-top: .4em; }
-  .trip .ref { font-size: .82rem; color: var(--muted); margin-top: 1.5em; }
-  .pager { display: flex; justify-content: space-between; gap: 16px; margin: 44px 0 0; padding-top: 14px; border-top: 1px solid var(--line); font-size: .95rem; }
+  .trip .photos figcaption { display: none; }
+  .trip .ref { font-size: .8rem; color: var(--muted); margin-top: 2em; }
+
+  .rec { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  .rec th { text-align: left; font-weight: normal; color: var(--muted); white-space: nowrap; padding: 5px 18px 5px 0; vertical-align: top; width: 1%; }
+  .rec td { padding: 5px 0; vertical-align: top; color: #cfd2cc; }
+  .rec td small { color: var(--muted); margin-left: 6px; }
+
+  .pager { display: flex; justify-content: space-between; gap: 16px; margin: 64px 0 0; padding-top: 16px; border-top: 1px solid var(--line); font-size: .9rem; color: var(--muted); }
+  .pager a:hover { color: var(--text); }
   .pager span:last-child { text-align: right; }
 
-  .lb { position: fixed; inset: 0; background: rgba(0,0,0,.94); display: none; z-index: 50; align-items: center; justify-content: center; flex-direction: column; }
+  .lb { position: fixed; inset: 0; background: rgba(0,0,0,.95); display: none; z-index: 50; align-items: center; justify-content: center; flex-direction: column; }
   .lb.open { display: flex; }
   .lb img { max-width: 100%; max-height: 86vh; cursor: default; }
-  .lb p { color: #bbb; font-size: .85rem; margin: 10px 16px 0; text-align: center; min-height: 1.2em; }
-  .lb .n { position: absolute; top: 12px; left: 16px; color: #888; font-size: .8rem; }
-  .lb .x { position: absolute; top: 4px; right: 10px; color: #ccc; font-size: 1.8rem; background: none; border: 0; padding: 6px 10px; cursor: pointer; }
-  footer { margin: 50px 0 34px; color: #5c605a; font-size: .85rem; }
+  .lb p { color: #aaa; font-size: .85rem; margin: 10px 16px 0; text-align: center; min-height: 1.2em; }
+  .lb .n { position: absolute; top: 14px; left: 18px; color: #777; font-size: .8rem; }
+  .lb .x { position: absolute; top: 4px; right: 10px; color: #bbb; font-size: 1.8rem; background: none; border: 0; padding: 6px 10px; cursor: pointer; }
+  footer { margin: 72px 0 40px; color: #4f534d; font-size: .8rem; }
 
-  @media (min-width: 640px) {
-    .trip .cover { margin: 20px 0; }
-    .trip figure.inline { margin: 1.6em 0; }
+  @media (min-width: 680px) {
+    .trip .cover, .trip figure.inline, .trip .photos { margin-left: 0; margin-right: 0; }
     .trip figure.inline figcaption { padding: 0; }
-    .trip .photos { columns: 3; margin: 0; padding: 0; }
+    .trip .photos { columns: 3; }
   }
 </style>
 </head>
@@ -110,9 +92,8 @@
 <div class="wrap">
 
 <header>
-  <h1><a href="#">Eli Wu 吳東洋</a></h1>
-  <p>登山紀錄 ｜ 吳東洋 來自北科大登山社</p>
-  <nav><a href="#records">紀錄</a><a href="#others">其他</a><a href="#peaks">山</a><a href="#photos">照片</a></nav>
+  <h1><a href="#">登山紀錄</a></h1>
+  <p>吳東洋 · 北科大登山社</p>
 </header>
 
 <main id="home"></main>
@@ -132,6 +113,8 @@
   欄位：
     id      網址代號（英文，不要重複）
     main    true = 放在「紀錄」、有自己的一頁；沒寫的會放到下面的清單
+    place   地點（首頁卡片用）
+    hook    首頁卡片上的一句話
     group   'other' = 不是爬山的經歷（訓練、志工），放在「其他經歷」
     title   名稱
     date    日期
@@ -165,7 +148,7 @@ const TRIPS = [
     peaks: ['玉山主峰','玉山東峰','玉山北峰','玉山西峰','玉山前峰'] },
   { id: 'nanhu-south', title: '南湖南峰', note: '尖尖挖嘎奈', peaks: ['南湖南峰'] },
 
-  { id: 'nan2-xinkang', main: true, title: '冬季南二段＋新康縱走', date: '大二寒假',
+  { id: 'nan2-xinkang', main: true, place: '中央山脈南二段', hook: '每天早上起床的儀式，是套上全濕且帶著冰晶的襪子。', title: '冬季南二段＋新康縱走', date: '大二寒假',
     note: '撤退，放棄新康段',
     team: ['Peter 陳冠元', '尹妤如', '林宛瑢', '蘇天樂', '吳東洋'],
     days: 8,
@@ -226,7 +209,7 @@ const TRIPS = [
   { id: 'camp-113', group: 'other', title: '113 大專山訓', days: 4 },
   { id: 'shanmeng-eagle', group: 'other', title: '山盟雛鷹計畫', note: '技術培訓' },
   { id: 'rock-climbing', group: 'other', title: '攀岩', note: '先鋒 / 頂繩' },
-  { id: 'yatsugatake', main: true, title: '日本八岳雪訓', date: '2026/01/11 – 01/16',
+  { id: 'yatsugatake', main: true, days: 6, place: '日本 南八岳', hook: '只要人爬得了的地方，都可以是路線。', title: '日本八岳雪訓', date: '2026/01/11 – 01/16',
     note: '阿彌陀岳北稜未竟',
     team: ['蘇天樂', 'Peter 陳冠元', '李冠儒', '劉瀚維', '吳東洋'],
     record: [
@@ -295,6 +278,8 @@ const TRIPS = [
   },
   { id: 'drytooling',
     main: true,
+    place: '北科攀岩場',
+    hook: '抱石像短跑，上攀像長跑，乾攀則是腳踏車。',
     title: '乾攀',
     date: '大三寒假起',
     note: '全台唯一學生自主乾攀場',
@@ -400,11 +385,13 @@ const MAIN = TRIPS.filter(t => t.main);
 
 function renderHome() {
   const list = items => `<ul class="list">${items.map(t => {
-    const sub = [t.date, t.days && `${t.days} 天`, t.role || t.note].filter(Boolean).join(' ・ ');
-    const written = (t.text || []).length;
-    return `<li><a href="#/${esc(t.id)}">
-      <span class="t">${esc(t.title)}${written ? ' <b>·</b>' : ''}${sub ? `<span class="sub">${esc(sub)}</span>` : ''}</span>
-    </a></li>`;
+    const meta = [t.date, t.days && `${t.days} 天`, t.place].filter(Boolean).join(' · ');
+    return `<li><a class="card" href="#/${esc(t.id)}">
+      ${t.cover ? `<div class="pic">${img(t.cover, t.title)}</div>` : ''}
+      <div class="txt">
+        <div class="t">${esc(t.title)}</div>
+        <div class="d">${esc(meta)}</div>
+      </div></a></li>`;
   }).join('')}</ul>`;
 
   // 其他：純文字，不開頁
@@ -414,28 +401,14 @@ function renderHome() {
   const photos = MAIN.filter(t => t.cover).map(t => ({ src: t.cover, caption: t.title, t })).concat(EXTRA_PHOTOS);
 
   $('#home').innerHTML = `
-    <h2>引言</h2>
     <div class="intro">${INTRO.map(p => `<p>${esc(p)}</p>`).join('')}</div>
 
-    <h2 id="records">紀錄 <span class="range">2024/03/23 – 2026/01/16</span></h2>
+    <h2 id="records">紀錄<span class="range">2024.03 – 2026.01</span></h2>
     ${list(MAIN)}
 
-    <h2 id="others">其他山岳</h2>
-    ${plain(rest.filter(t => t.group !== 'other'))}
-
-    <h2>其他經歷</h2>
-    ${plain(rest.filter(t => t.group === 'other'))}
-
-    <h2 id="peaks">山</h2>
-    <div class="peaks">${PEAK_GROUPS.map(([name, list]) => `<p><b>${esc(name)}</b><br>${list.map(p => {
-      const t = MAIN.find(x => (x.peaks || []).includes(p));
-      return t ? `<a href="#/${esc(t.id)}">${esc(p)}</a>` : esc(p);
-    }).join('、')}</p>`).join('')}</div>
-
-    <h2 id="photos">照片</h2>
-    <div class="photos">${photos.map(p => p.t
-      ? `<a href="#/${esc(p.t.id)}" title="${esc(p.caption)}">${img(p.src, p.caption)}</a>`
-      : `<span title="${esc(p.caption)}">${img(p.src, p.caption)}</span>`).join('')}</div>`;
+    <h2 id="others">其他</h2>
+    <p class="inline-list">${rest.filter(t => t.group !== 'other').map(t => esc(t.title)).join('　')}</p>
+    <p class="inline-list">${rest.filter(t => t.group === 'other').map(t => esc(t.title)).join('　')}</p>`;
 }
 
 function renderTrip(t) {
@@ -477,7 +450,6 @@ function renderTrip(t) {
     ${(t.text || []).length ? `${structured && !String(t.text[0]).startsWith('## ') ? '<h2>心得</h2>' : ''}<div class="body">${t.text.map(para).join('')}
       ${(t.thanks || []).length ? `<div class="thanks">${t.thanks.map(p => `<p>${esc(p)}</p>`).join('')}</div>` : ''}</div>` : ''}
     ${t.ref ? `<p class="ref">參考：${esc(t.ref)}</p>` : ''}
-    ${(t.peaks || []).length ? `<h2>山</h2><p class="peaklist">${t.peaks.map(esc).join('、')}</p>` : ''}
     ${extra.length ? `<h2>照片</h2><div class="photos">${extra.map(p =>
       `<figure>${img(p.src, p.caption)}<figcaption>${esc(p.caption)}</figcaption></figure>`).join('')}</div>` : ''}
     <div class="pager">
